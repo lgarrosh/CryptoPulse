@@ -13,12 +13,12 @@ public class AppProperties {
 	
 	private String telegramBotUrl;
 	private String telegramBotToken;
-	
+
 	public AppProperties() {
 		log.info("AppProperties bean createed");
 	}
 
-	public String getUrl() {
+	public String getFullUrl() {
 		return telegramBotUrl + telegramBotToken;
 	}
 
@@ -28,5 +28,13 @@ public class AppProperties {
 
 	public void setTelegramBotToken(String telegramBotToken) {
 		this.telegramBotToken = telegramBotToken;
+	}
+	
+	public String getTelegramBotUrl() {
+		return telegramBotUrl;
+	}
+	
+	public String getTelegramBotToken() {
+		return telegramBotToken;
 	}
 }

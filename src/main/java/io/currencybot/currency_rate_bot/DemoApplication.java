@@ -10,10 +10,5 @@ public class DemoApplication {
 //		ApplicationContext context = SpringApplication.run(DemoApplication.class, args);
 		SpringApplication.run(DemoApplication.class, args);
 		
-
-//		Mono<String> responseMonoString = WebClientConfig.getRequest("https://jsonplaceholder.typicode.com/posts/1");
-//		
-//		responseMonoString.subscribe(System.out::println);
-		
 	}
 }

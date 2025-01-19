@@ -44,7 +44,7 @@ public class WebClientConfig {
 	  			      .addHandlerLast(new WriteTimeoutHandler(TIMEOUT, TimeUnit.MILLISECONDS)));
 	  	
 	  	WebClient wClient = WebClient.builder()
-	  			.baseUrl(appProperties.getUrl())
+	  			.baseUrl(appProperties.getFullUrl())
 	              .defaultHeader("Accept", "application/json")
 	              .defaultHeader("Content-Type", "application/json")
 	              .clientConnector(new ReactorClientHttpConnector(httpClient))
