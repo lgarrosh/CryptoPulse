@@ -1,4 +1,4 @@
-package io.currencybot.currency_rate_bot;
+package io.currencybot.currency_rate_bot.properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

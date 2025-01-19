@@ -1,4 +1,4 @@
-package io.currencybot.currency_rate_bot.webhook;
+package io.currencybot.currency_rate_bot.service.webhook;
 
 import java.io.IOException;
 
@@ -17,17 +17,16 @@ import com.pengrad.telegrambot.response.BaseResponse;
 
 import jakarta.annotation.PostConstruct;
 
-
 @Component
 public class WebhookManager {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(WebhookManager.class);
-	
+
 	@Autowired
 	private NgrokService ngrokService;
 	@Autowired
 	private TelegramBot bot;
-	
+
 	public WebhookManager() {
 		log.info("WebhookManager create been");
 	}
@@ -37,25 +36,25 @@ public class WebhookManager {
 		// Получаем публичный url нашего локального сервера
 		String publicUrl = ngrokService.startNgrok(8080);
 		log.info("ngrok url: " + publicUrl);
-		
-		SetWebhook webhookRequest = new SetWebhook().url(publicUrl+"/webhook");
+
+		SetWebhook webhookRequest = new SetWebhook().url(publicUrl + "/webhook");
 		// Установка вебхука
 		bot.execute(webhookRequest, new Callback<SetWebhook, BaseResponse>() {
-		    @Override
-		    public void onResponse(SetWebhook request, BaseResponse response) {
-		    	System.out.println("Webhook успешно установлен!");
-		    	System.out.println(response.toString());
-		    }
-		    @Override
-		    public void onFailure(SetWebhook request, IOException e) {
-		    	System.out.println("Ошибка при установке вебхука: " + e.toString());
-		    }
+			@Override
+			public void onResponse(SetWebhook request, BaseResponse response) {
+				System.out.println("Webhook успешно установлен!");
+				System.out.println(response.toString());
+			}
+
+			@Override
+			public void onFailure(SetWebhook request, IOException e) {
+				System.out.println("Ошибка при установке вебхука: " + e.toString());
+			}
 		});
 	}
-	
+
 	@EventListener(ContextClosedEvent.class)
 	public void disroyWebhookAndNgrok() {
 		ngrokService.stopNgrok();
 	}
 }
-

@@ -1,4 +1,4 @@
-package io.currencybot.currency_rate_bot;
+package io.currencybot.currency_rate_bot.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,15 +8,16 @@ import org.springframework.context.annotation.Configuration;
 
 import com.pengrad.telegrambot.TelegramBot;
 
+import io.currencybot.currency_rate_bot.properties.AppProperties;
 
 @Configuration
 public class TelegramBotConfiguration {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(TelegramBotConfiguration.class);
-	
+
 	@Autowired
 	private AppProperties appProperties;
-	
+
 	@Bean
 	public TelegramBot createTelegramBot() {
 		TelegramBot bot = new TelegramBot(appProperties.getTelegramBotToken());
