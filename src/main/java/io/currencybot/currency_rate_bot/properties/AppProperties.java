@@ -13,6 +13,7 @@ public class AppProperties {
 	
 	private String telegramBotUrl;
 	private String telegramBotToken;
+	private String currencyRateCrbUrl;
 
 	public AppProperties() {
 		log.info("AppProperties bean createed");
@@ -29,6 +30,10 @@ public class AppProperties {
 	public void setTelegramBotToken(String telegramBotToken) {
 		this.telegramBotToken = telegramBotToken;
 	}
+
+	public void setCurrencyRateCrbUrl(String currencyRateCrbUrl) {
+		this.currencyRateCrbUrl = currencyRateCrbUrl;
+	}
 	
 	public String getTelegramBotUrl() {
 		return telegramBotUrl;
@@ -37,4 +42,9 @@ public class AppProperties {
 	public String getTelegramBotToken() {
 		return telegramBotToken;
 	}
+
+	public String getCurrencyRateCrbUrl() {
+		return currencyRateCrbUrl;
+	}
+	
 }

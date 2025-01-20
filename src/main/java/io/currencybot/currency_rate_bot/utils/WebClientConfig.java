@@ -6,12 +6,10 @@ import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import io.currencybot.currency_rate_bot.properties.AppProperties;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
@@ -28,9 +26,6 @@ public class WebClientConfig {
 	
 	private static final Logger log = LoggerFactory.getLogger(WebClientConfig.class);
 	
-	@Autowired
-	private AppProperties appProperties;
-	
 	public WebClientConfig() {
 		log.info("WebClientConfig bean created");
 	}
@@ -45,7 +40,6 @@ public class WebClientConfig {
 	  			      .addHandlerLast(new WriteTimeoutHandler(TIMEOUT, TimeUnit.MILLISECONDS)));
 	  	
 	  	WebClient wClient = WebClient.builder()
-	  			.baseUrl(appProperties.getFullUrl())
 	              .defaultHeader("Accept", "application/json")
 	              .defaultHeader("Content-Type", "application/json")
 	              .clientConnector(new ReactorClientHttpConnector(httpClient))
