@@ -42,8 +42,7 @@ public class WebhookManager {
 		bot.execute(webhookRequest, new Callback<SetWebhook, BaseResponse>() {
 			@Override
 			public void onResponse(SetWebhook request, BaseResponse response) {
-				System.out.println("Webhook успешно установлен!");
-				System.out.println(response.toString());
+				log.info("Webhook успешно установлен!");
 			}
 
 			@Override

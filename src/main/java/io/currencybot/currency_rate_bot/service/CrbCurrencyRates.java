@@ -3,6 +3,8 @@ package io.currencybot.currency_rate_bot.service;
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.currencybot.currency_rate_bot.model.ExchangeRates;
+import io.currencybot.currency_rate_bot.model.Currency;
 import io.currencybot.currency_rate_bot.properties.AppProperties;
 import io.currencybot.currency_rate_bot.utils.WebClientConfig;
 import reactor.core.publisher.Mono;
@@ -28,7 +31,20 @@ public class CrbCurrencyRates {
 	
 	private ExchangeRates exchangeRates;
 	
-	public ExchangeRates getRates() {
+	public static final String[] VALUTE = {"AUD", "GBP", "AMD", "USD", "EUR"};
+	
+	
+	
+	public Map<String, Currency> getRates() {
+		ExchangeRates rates = getRatesControler();
+		Map<String, Currency> valute = new HashMap<String, Currency>();
+		for (String i : VALUTE) {
+			valute.put(i, rates.getValute().get(i));
+		}
+		return valute;
+	}
+	
+	private ExchangeRates getRatesControler() {
 		if (isNotRelevantRate()) {
 			log.info("Запрос на получения курса валют");
 			exchangeRates = getCourseFromCrb();
