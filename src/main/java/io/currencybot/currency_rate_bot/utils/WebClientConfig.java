@@ -2,6 +2,7 @@ package io.currencybot.currency_rate_bot.utils;
 
 import java.time.Duration;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
@@ -50,6 +51,18 @@ public class WebClientConfig {
 	
 	public Mono<String> getRequest(String uri) {
     	Mono<String> responseMono = webClient.get()
+                .uri(uri)
+                .retrieve()
+                .bodyToMono(String.class);
+    	return responseMono;
+    }
+	
+	public Mono<String> getRequest(String uri, Map<String, String> headers) {
+		WebClient webClientMutate = webClient;
+		for (Map.Entry<String, String> entry : headers.entrySet()) {
+			webClientMutate = webClientMutate.mutate().defaultHeader(entry.getKey(), entry.getValue()).build();
+		}
+    	Mono<String> responseMono = webClientMutate.get()
                 .uri(uri)
                 .retrieve()
                 .bodyToMono(String.class);

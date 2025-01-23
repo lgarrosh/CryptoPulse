@@ -12,7 +12,7 @@ import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.response.BaseResponse;
 
-import io.currencybot.currency_rate_bot.model.Currency;
+import io.currencybot.currency_rate_bot.model.crb.Currency;
 
 @Service
 public class TelegramBotService {

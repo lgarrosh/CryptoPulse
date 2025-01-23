@@ -1,4 +1,4 @@
-package io.currencybot.currency_rate_bot.model;
+package io.currencybot.currency_rate_bot.model.crb;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

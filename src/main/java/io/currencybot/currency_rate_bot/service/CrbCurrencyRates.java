@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.currencybot.currency_rate_bot.model.ExchangeRates;
-import io.currencybot.currency_rate_bot.model.Currency;
+import io.currencybot.currency_rate_bot.model.crb.ExchangeRates;
+import io.currencybot.currency_rate_bot.model.crb.Currency;
 import io.currencybot.currency_rate_bot.properties.AppProperties;
 import io.currencybot.currency_rate_bot.utils.WebClientConfig;
 import reactor.core.publisher.Mono;

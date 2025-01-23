@@ -14,6 +14,8 @@ public class AppProperties {
 	private String telegramBotUrl;
 	private String telegramBotToken;
 	private String currencyRateCrbUrl;
+	private String coinMarketCapUrl;
+	private String coinMarketCapKey;
 
 	public AppProperties() {
 		log.info("AppProperties bean createed");
@@ -35,6 +37,14 @@ public class AppProperties {
 		this.currencyRateCrbUrl = currencyRateCrbUrl;
 	}
 	
+	public void setCoinMarketCapUrl(String coinMarketCapbUrl) {
+		this.coinMarketCapUrl = coinMarketCapbUrl;
+	}
+	
+	public void setCoinMarketCapKey(String coinMarketCapKey) {
+		this.coinMarketCapKey = coinMarketCapKey;
+	}
+	
 	public String getTelegramBotUrl() {
 		return telegramBotUrl;
 	}
@@ -46,5 +56,12 @@ public class AppProperties {
 	public String getCurrencyRateCrbUrl() {
 		return currencyRateCrbUrl;
 	}
-	
+
+	public String getCoinMarketCapUrl() {
+		return coinMarketCapUrl;
+	}
+
+	public String getCoinMarketCapKey() {
+		return coinMarketCapKey;
+	}
 }
