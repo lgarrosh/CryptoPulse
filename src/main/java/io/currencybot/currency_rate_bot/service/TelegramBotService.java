@@ -1,6 +1,6 @@
 package io.currencybot.currency_rate_bot.service;
 
-import java.util.Map;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,17 +28,16 @@ public class TelegramBotService {
 	public void processing(Update update) {
 		Long chatId = update.message().chat().id();
 		String message = update.message().text();
-		BaseResponse baseResponse;
 
 		if (message.charAt(0) == '/') {
-			baseResponse = commandControl(update);
+			BaseResponse baseResponse = commandControl(update);
 			if (baseResponse != null) {
 				log.info(baseResponse.isOk() ? "Успешно" : "Ошибка");
 			}
 		} else {
 			SendMessage request = new SendMessage(chatId, message);
-			BaseResponse baseResponse2 = bot.execute(request);
-			log.info(baseResponse2.isOk() ? "Успешно" : "Ошибка");
+			BaseResponse baseResponse = bot.execute(request);
+			log.info(baseResponse.isOk() ? "Успешно" : "Ошибка");
 		}
 	}
 	
@@ -48,9 +47,9 @@ public class TelegramBotService {
 	}
 	
 	private BaseResponse rates(Long chatId) {
-		Map<String, Currency> ratesMap = crbCurrencyRates.getRates();
+		List<Currency> rates = crbCurrencyRates.getRates();
 		String ratesInfo = new String();
-		for (Currency currency : ratesMap.values()) {
+		for (Currency currency : rates) {
 			if (!ratesInfo.isEmpty()) {
 				ratesInfo += '\n';
 			}

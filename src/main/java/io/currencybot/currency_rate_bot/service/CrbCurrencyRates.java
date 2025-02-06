@@ -3,8 +3,8 @@ package io.currencybot.currency_rate_bot.service;
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,13 +35,28 @@ public class CrbCurrencyRates {
 	
 	
 	
-	public Map<String, Currency> getRates() {
+	public List<Currency> getRates() {
 		ExchangeRates rates = getRatesControler();
-		Map<String, Currency> valute = new HashMap<String, Currency>();
-		for (String i : VALUTE) {
-			valute.put(i, rates.getValute().get(i));
+		List<Currency> valuteList = new ArrayList<Currency>();
+		if (rates != null) {
+			for (String i : VALUTE) {
+				valuteList.add(rates.getValute().get(i));
+			}
+			return valuteList;
 		}
-		return valute;
+		return null;
+	}
+	
+	public List<Currency> getRates(String...strings) {
+		ExchangeRates rates = getRatesControler();
+		List<Currency> valuteList = new ArrayList<Currency>();
+		if (rates != null) {
+			for (String i : strings) {
+				valuteList.add(rates.getValute().get(i));
+			}
+			return valuteList;
+		}
+		return null;
 	}
 	
 	private ExchangeRates getRatesControler() {

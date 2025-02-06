@@ -201,10 +201,16 @@ public class RequestedCryptocurrency {
 		this.quote = quote;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "RequestedCryptocurrency [id=" + id + ", name=" + name + ", symbol=" + symbol + ", slug=" + slug
+//				+ ", quote=" + quote + "]";
+//	}
+	
 	@Override
 	public String toString() {
-		return "RequestedCryptocurrency [id=" + id + ", name=" + name + ", symbol=" + symbol + ", slug=" + slug
-				+ ", quote=" + quote + "]";
+		return "	RequestedCryptocurrency\n"
+				+ "			[id=" + id + "\n		name=" + name + "\n			quote=" + quote + "]";
 	}
 	
 }

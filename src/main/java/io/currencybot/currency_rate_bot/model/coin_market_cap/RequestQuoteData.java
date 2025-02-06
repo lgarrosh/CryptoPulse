@@ -7,21 +7,25 @@ public class RequestQuoteData {
 	/*
 	 * Объект криптовалюты для каждого запрошенного.
 	 */
-	private Map<String, RequestedCryptocurrency[]> data;
+	private Map<String, RequestedCryptocurrency> data;
 	
 	/*
 	 * 	Стандартизированный объект состояния для вызовов API.
 	 */
 	private Status status;
 	
+	
+	
+	
+	
 	public RequestQuoteData() {}
 
-	public RequestQuoteData(Map<String, RequestedCryptocurrency[]> data, Status status) {
+	public RequestQuoteData(Map<String, RequestedCryptocurrency> data, Status status) {
 		this.data = data;
 		this.status = status;
 	}
 
-	public Map<String, RequestedCryptocurrency[]> getData() {
+	public Map<String, RequestedCryptocurrency> getData() {
 		return data;
 	}
 
@@ -29,7 +33,7 @@ public class RequestQuoteData {
 		return status;
 	}
 
-	public void setData(Map<String, RequestedCryptocurrency[]> data) {
+	public void setData(Map<String, RequestedCryptocurrency> data) {
 		this.data = data;
 	}
 
@@ -39,7 +43,8 @@ public class RequestQuoteData {
 
 	@Override
 	public String toString() {
-		return "RequestQuoteData [data=" + data + ", status=" + status + "]";
+		return "RequestQuoteData\n"
+				+ "		[data = " + data + "/n		status = " + status + "]";
 	}
 	
 }
